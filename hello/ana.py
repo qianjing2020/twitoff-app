@@ -1,5 +1,6 @@
 ''' Note: to automatic reload flask when file change, run this command line at the terminal: 
-$ FLASK_APP=hello.py FLASK_ENV=development flask run --port 8080
+$ FLASK_APP=ana.py FLASK_ENV=development flask run --port 8080
+reference: https://flask.palletsprojects.com/en/1.1.x/quickstart/ 
 '''
 
 from flask import Flask, escape, request
@@ -13,6 +14,10 @@ def index():
 @app.route('/user/<username>') # pass argument in < >
 def show_user(username):
     return f'User:{username}'
+
+@app.route('/post/<int:post_id>') # pass argument with prescribed data type  < >
+def show_post(post_id):
+    return 'Post %d' % post_id
 
 @app.route('/ana') #routing requests to the base / route, this is actually a function takes a function
 def hello():
